@@ -49,6 +49,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     //Xử lí khi chạm vào enemy
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
     public void Die()
     {
         animator.SetBool("Moving",true);
