@@ -7,11 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     public Vector3 direction;
     public Animator animator;
+    
+    private GameObject gameController;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        gameController = GameObject.FindGameObjectWithTag("GameController");
     }
 
     // Update is called once per frame
@@ -48,18 +51,20 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
-    //Xử lí khi chạm vào enemy
+    //Xử lí khi chạm vào enemy, cho chơi dừng lại
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            gameController.GetComponent<GameController>().EndGame();
         }
+        
     }
     public void Die()
     {
         animator.SetBool("Moving",true);
         // Thêm các hành động khi player chết, ví dụ: hiển thị game over, tắt collider, v.v.
         Debug.Log("Game Over!");
+        gameController.GetComponent<GameController>().EndGame();
     }
 }
