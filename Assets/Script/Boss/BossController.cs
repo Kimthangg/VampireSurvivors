@@ -11,15 +11,23 @@ public class BossController : MonoBehaviour
     public float bulletLifetime = 2f; // Thời gian tồn tại của đạn
     public float bulletSpeed = 5f; // Tốc độ di chuyển của đạn
     private float nextFireTime;
+    public float mau = 50;
+    private Transform player;
+    private GameObject gameController;
+
+    
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         nextFireTime = Time.time + 1 / fireRate; // Set initial fire time
+        
     }
 
     void Update()
     {
-        
-        
+        if (target != null)
+        {
             // Calculate the direction to the player
             Vector3 direction = target.position - transform.position;
 
@@ -36,7 +44,7 @@ public class BossController : MonoBehaviour
                 StartCoroutine(Shoot());
                 nextFireTime = Time.time + 1 / fireRate; // Update next fire time
             }
-        
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -44,7 +52,7 @@ public class BossController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(other.gameObject);
-            //other.GetComponent<PlayerMovement>().Die();
+            gameController.GetComponent<GameController>().EndGame();
         }
 
     }
@@ -74,4 +82,19 @@ public class BossController : MonoBehaviour
         // Spawn lại đạn sau khi đạn cũ biến mất
         StartCoroutine(Shoot());
     }
+    public void TakeDamage(int damageAmount)
+    {
+        
+        mau -= damageAmount;
+
+        if (mau <= 0)
+        {
+            
+            Destroy(gameObject);
+        }
+    }
+    public void ActivateBoss(){
+        gameObject.SetActive(true);
+    }
+    
 }

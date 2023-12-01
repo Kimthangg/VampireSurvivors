@@ -1178,7 +1178,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5216209283828132493, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
   m_PrefabInstance: {fileID: 1622088438}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1098348773
+--- !u!114 &1098348777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1187,12 +1187,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1098348767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dcb53bec4058434bbbf2a9993e72b0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 05c3529a75bafa043bf52226c012dc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   target: {fileID: 1973667884}
-  mau: 1000
+  bulletPrefab: {fileID: 5996962763106306692, guid: 96720cf48a820dd418fed289f25fe2e0, type: 3}
+  bulletSpawnPoint: {fileID: 1098348772}
+  fireRate: 1
+  bulletLifetime: 2
+  bulletSpeed: 5
+  mau: 50
 --- !u!1 &1123679223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,14 +1302,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599810259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ce29e41fd2f64fb3624197b7bc3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5722459036603914673, guid: 7f6030adafce34b4e8d0a3716e460871, type: 3}
   maxNumberOfEnemies: 10
-  spawnRadius: 10
+  spawnRadius: 3
   timeBetweenSpawns: 1
 --- !u!114 &1599810261
 MonoBehaviour:
@@ -1313,14 +1318,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599810259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ce29e41fd2f64fb3624197b7bc3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6455858175461525148, guid: 1ad6d0a8c7057244eae8b103d20407b8, type: 3}
   maxNumberOfEnemies: 10
-  spawnRadius: 10
+  spawnRadius: 3
   timeBetweenSpawns: 1
 --- !u!4 &1599810262
 Transform:
@@ -1344,7 +1349,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599810259}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac2ce29e41fd2f64fb3624197b7bc3c4, type: 3}
   m_Name: 
@@ -1364,7 +1369,7 @@ PrefabInstance:
     - target: {fileID: 1713278113398060818, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1376434279, guid: 51076119490c87749bf5af610e91d42d, type: 3}
+      objectReference: {fileID: -1852374534, guid: 796cb9ba29d0a0d4aa14cb02bbcba9b5, type: 3}
     - target: {fileID: 3700423412873283683, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_SpriteTilingProperty.border.w
       value: 0
@@ -1383,12 +1388,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3700423412873283683, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.5
+      value: 0.96875
       objectReference: {fileID: 0}
     - target: {fileID: 3700423412873283683, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.375
+      value: 0.65625
       objectReference: {fileID: 0}
+    - target: {fileID: 3722523495930213471, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4d4a21d8dce883e4191f6f75922d074b, type: 2}
     - target: {fileID: 5216209283828132493, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.4798303
@@ -1434,8 +1443,12 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8328003156645785910, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328003156645785910, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8705615010994312263, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: target
@@ -1455,7 +1468,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8328003156645785910, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1098348773}
+      addedObject: {fileID: 1098348777}
   m_SourcePrefab: {fileID: 100100000, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
 --- !u!1 &1790984301
 GameObject:

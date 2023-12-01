@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public Transform target;
     public float mau;
+    static int cout = 0;
     
     void Update()
     {
@@ -22,7 +23,14 @@ public class Enemy : MonoBehaviour
 
         if (mau <= 0)
         {
+            cout++;
+            Debug.Log("So luong" + cout);
+            if(cout >= 2){
+                //xuất hiện boss
+            }            
             Destroy(gameObject);
         }
     }
+    
+
 }

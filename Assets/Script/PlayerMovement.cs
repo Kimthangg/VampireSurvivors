@@ -52,13 +52,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     //Xử lí khi chạm vào enemy, cho chơi dừng lại
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         gameController.GetComponent<GameController>().EndGame();
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            gameController.GetComponent<GameController>().EndGame();
             
-    //     }
+        }
         
-    // }
+    }
 }

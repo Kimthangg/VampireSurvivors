@@ -23,7 +23,7 @@ public class LifeTimeDestroyer : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             
-            collision.GetComponent<Enemy>().TakeDamage(damage);
+            collision.GetComponent<BossController>().TakeDamage(damage);
             Destroy(gameObject);
         }
 

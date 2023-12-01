@@ -5,20 +5,22 @@ using UnityEngine;
 public class time : MonoBehaviour
 {
     public float Time;
-
+    private GameObject gameController;  
     // Start is called before the first frame update
     void Start() 
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         Destroy(this.gameObject, Time);
     }
     // xóa quái vật và đạn
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         Destroy(collision.gameObject);
-    //         collision.GetComponent<PlayerMovement>().Die();
-    //     }
-    // }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            gameController.GetComponent<GameController>().EndGame();
+            //collision.GetComponent<PlayerMovement>().Die();
+        }
+    }
 }

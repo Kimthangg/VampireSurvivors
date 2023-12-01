@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     }
     public void ExitGame()
     {
-        //Application.Quit();
+        Application.Quit();
         Time.timeScale = 0;
     }
 }

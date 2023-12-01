@@ -47,9 +47,9 @@ public class Random_Enemy : MonoBehaviour
         Vector3 spawnPosition = new Vector3(randomPosition.x, randomPosition.y, -5f) + transform.position;
 
         // Đảm bảo khoảng cách tối thiểu giữa quái và người chơi
-        if (Vector3.Distance(spawnPosition, player.position) < 10)
+        if (Vector3.Distance(spawnPosition, player.position) < 20)
         {
-            spawnPosition += (spawnPosition - player.position).normalized * 10;
+            spawnPosition += (spawnPosition - player.position).normalized * 20;
         }
 
         // Tạo quái tại vị trí tính toán
