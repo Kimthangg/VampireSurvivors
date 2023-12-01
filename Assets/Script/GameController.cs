@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
     }
     public void RestartGame()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            Destroy(enemy);
+        }
         SceneManager.LoadScene(0);
     }
     public void ExitGame()
