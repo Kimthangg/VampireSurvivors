@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   target: {fileID: 0}
+  mau: 20
 --- !u!95 &8529232472628935070
 Animator:
   serializedVersion: 5

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,9 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
     public Transform target;
     public float mau;
-    static int cout = 0;
+    public static int count = 0;
+    public static event Action OnEnemyKilled;
+
     
     void Update()
     {
@@ -23,11 +26,11 @@ public class Enemy : MonoBehaviour
 
         if (mau <= 0)
         {
-            cout++;
-            Debug.Log("So luong" + cout);
-            if(cout >= 2){
-                //xuất hiện boss
-            }            
+            count++;
+            Debug.Log("So luong" + count);
+            if(count >= 2){
+                OnEnemyKilled?.Invoke();
+            }       
             Destroy(gameObject);
         }
     }

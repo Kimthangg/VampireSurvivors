@@ -47,15 +47,15 @@ public class Random_Enemy : MonoBehaviour
         Vector3 spawnPosition = new Vector3(randomPosition.x, randomPosition.y, -5f) + transform.position;
 
         // Đảm bảo khoảng cách tối thiểu giữa quái và người chơi
-        if (Vector3.Distance(spawnPosition, player.position) < 20)
+        if (Vector3.Distance(spawnPosition, player.position) < 15)
         {
-            spawnPosition += (spawnPosition - player.position).normalized * 20;
+            spawnPosition += (spawnPosition - player.position).normalized * 15;
         }
 
         // Tạo quái tại vị trí tính toán
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         float randomSpeed = Random.Range(1f, 2.5f);
-        float random_Mau = Random.Range(20f, 100f);
+        float random_Mau = Random.Range(20f, 200f);
         enemy.GetComponent<Enemy>().speed = randomSpeed;
         enemy.GetComponent<Enemy>().target = player;
         enemy.GetComponent<Enemy>().mau = random_Mau;

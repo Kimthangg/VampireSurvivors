@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,7 +14,10 @@ public class BossController : MonoBehaviour
     private float nextFireTime;
     public float mau = 50;
     private Transform player;
+    public static event Action OnBossActivation;
     private GameObject gameController;
+    private bool bossActivated=false;
+    
 
     
     void Start()
@@ -21,7 +25,14 @@ public class BossController : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("GameController");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nextFireTime = Time.time + 1 / fireRate; // Set initial fire time
-        
+        Enemy.OnEnemyKilled += CheckEnemyCount;
+        gameObject.SetActive(false);
+    }
+
+     void OnDestroy()
+    {
+        // Hủy đăng ký sự kiện khi hủy đối tượng
+        Enemy.OnEnemyKilled -= CheckEnemyCount;
     }
 
     void Update()
@@ -52,7 +63,10 @@ public class BossController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(other.gameObject);
-            gameController.GetComponent<GameController>().EndGame();
+            if (gameController != null)
+            {
+                gameController.GetComponent<GameController>().EndGame();
+            }
         }
 
     }
@@ -89,12 +103,42 @@ public class BossController : MonoBehaviour
 
         if (mau <= 0)
         {
-            
+            DeactivateBoss();
             Destroy(gameObject);
         }
     }
-    public void ActivateBoss(){
+    void CheckEnemyCount()
+    {
+        // Kiểm tra xem đã giết đủ enemy chưa
+        if (Enemy.count >= 2 && !bossActivated)
+        {
+            // Nếu đã giết đủ, thì kích hoạt boss
+            TryActivateBoss();
+        }
+    }
+
+    public void TryActivateBoss()
+    {
+        if (!gameObject.activeSelf)
+        {
+            Debug.Log("Try to activate boss");
+            OnBossActivation?.Invoke();
+            ActivateBoss();
+        }
+    }
+
+    void ActivateBoss()
+    {
+        Debug.Log("Boss activated");
+        bossActivated=true;
         gameObject.SetActive(true);
     }
-    
+    void DeactivateBoss()
+    {
+        Debug.Log("Boss deactivated");
+        bossActivated = false;
+        gameObject.SetActive(false);
+    }
 }
+    
+
