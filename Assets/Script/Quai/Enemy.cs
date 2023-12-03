@@ -10,8 +10,7 @@ public class Enemy : MonoBehaviour
     public float mau;
     public static int count = 0;
     public static event Action OnEnemyKilled;
-
-    
+  
     void Update()
     {
         if (target != null)

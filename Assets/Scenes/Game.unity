@@ -1105,6 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endgame: {fileID: 1054916440}
+  Boss: {fileID: 1098348767}
 --- !u!1 &1478086499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,11 +1273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216209283828132493, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.75
+      value: -6.9
       objectReference: {fileID: 0}
     - target: {fileID: 5216209283828132493, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.76
+      value: 9.93
       objectReference: {fileID: 0}
     - target: {fileID: 5216209283828132493, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1316,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8328003156645785910, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8328003156645785910, guid: 7592d304dddc5e54c811dc83fcd7fee2, type: 3}
       propertyPath: m_TagString

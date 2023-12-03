@@ -7,6 +7,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject endgame;
+    private Enemy Enemy;
+    public GameObject Boss;
+    private void Update()
+    {
+       if( Enemy.count == 10)
+        {
+            Boss.SetActive(true);
+        }
+    }
     public void StartGame()
     {
         Time.timeScale = 1;
