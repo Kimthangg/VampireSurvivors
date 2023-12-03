@@ -18,7 +18,6 @@ public class time : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
             gameController.GetComponent<GameController>().EndGame();
             //collision.GetComponent<PlayerMovement>().Die();
         }
