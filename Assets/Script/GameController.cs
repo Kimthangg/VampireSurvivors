@@ -6,20 +6,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject startGame;
     public GameObject endgame;
-    public Button Restart;
-    public Button Exit;
-    // Start is called before the first frame update
-    void Start()
-    {
-        startGame.SetActive(true);
-        Time.timeScale = 0;
-    }
     public void StartGame()
     {
         Time.timeScale = 1;
-        startGame.SetActive(false);
+        SceneManager.LoadScene(1);
     }
     public void EndGame()
     {
@@ -33,7 +24,7 @@ public class GameController : MonoBehaviour
         {
             Destroy(enemy);
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void ExitGame()
     {

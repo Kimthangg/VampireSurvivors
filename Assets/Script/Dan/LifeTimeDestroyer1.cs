@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeTimeDestroyer : MonoBehaviour
+public class LifeTimeDestroyer1 : MonoBehaviour
 {
     public float Time;
     public int damage = 10;
-    
+
     // Start is called before the first frame update
-    void Start() 
+    void Start()
     {
         Destroy(this.gameObject, Time);
     }
@@ -22,7 +22,7 @@ public class LifeTimeDestroyer : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Boss"))
         {
-            
+
             collision.GetComponent<BossController>().TakeDamage(damage);
             Destroy(gameObject);
         }
